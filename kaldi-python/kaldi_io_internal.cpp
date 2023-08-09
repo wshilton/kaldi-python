@@ -122,7 +122,7 @@ class PyObjectHolder {
 
   static bool IsReadInBinary() {return true;}
 
-  const T &Value() const {return t_;}  // if t is a pointer, would return *t_;
+  virtual T &Value() virtual {return t_;}  // if t is a pointer, would return *t_;
   
   void Swap(PyObjectHolder *other) {
     // the t_ values are pointers so this is a shallow swap.
@@ -272,7 +272,7 @@ class PythonToKaldiHolder {
 
   static bool IsReadInBinary() {return true;}
 
-  const T &Value() const {return t_;}  // if t is a pointer, would return *t_;
+  virtual T &Value() virtual {return t_;}  // if t is a pointer, would return *t_;
   
   void Swap(PythonToKaldiHolder<Converter> *other) {
     // the t_ values are pointers so this is a shallow swap.
