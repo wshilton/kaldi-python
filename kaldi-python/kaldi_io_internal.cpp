@@ -71,7 +71,7 @@ class PyObjectHolder {
   PyObjectHolder() {
   }
 
-  static bool Write(std::ostream &os, bool binary, const T &t) {
+  static bool Write(std::ostream &os, bool binary, T &t) {
     kaldi::InitKaldiOutputStream(os, binary);  // Puts binary header if binary mode.
     try {
       if (binary) {  //pickle the object
@@ -253,7 +253,7 @@ class PythonToKaldiHolder {
   PythonToKaldiHolder() : h_() {
   }
 
-  static bool Write(std::ostream &os, bool binary, const T &t) {
+  static bool Write(std::ostream &os, bool binary, T &t) {
     try {
       auto_ptr<typename HW::T> obj(Converter::python_to_kaldi(t));
       return HW::Write(os, binary, (*obj));
