@@ -384,9 +384,9 @@ public:
           .def("__contains__", &Reader::HasKey)
           .def("has_key", &Reader::HasKey)
           .def("__getitem__", &Reader::Value,
-               bp::return_value_policy<bp::copy_const_reference>())
+               bp::return_value_policy<bp::copy_non_const_reference>())
           .def("value", &Reader::Value,
-               bp::return_value_policy<bp::copy_const_reference>())
+               bp::return_value_policy<bp::copy_non_const_reference>())
           .def("__enter__", &get_self_ref<Reader>,
                bp::return_internal_reference<1>())
           .def("__exit__", &exit<Reader>)
@@ -412,7 +412,7 @@ public:
           .def("__exit__", &exit<Reader>)
           .def("done", &Reader::Done)
           .def("_kaldi_value", &Reader::Value,
-                     bp::return_value_policy<bp::copy_const_reference>())
+                     bp::return_value_policy<bp::copy_non_const_reference>())
           .def("_kaldi_next", &Reader::Next)
           .def("_kaldi_key", &Reader::Key)
           ;
